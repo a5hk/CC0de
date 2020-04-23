@@ -1,0 +1,16 @@
+#app {
+  color: red;
+  background: linear-gradient(to left, #055, red 40%, rgb(111, 222, 0) 70%, #889977 80%);
+}
+
+div>.list::nth-child(2n + 1) {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border: 1px solid green;
+}
+
+@media screen and (max-width: 960px) {
+  .sidebar {
+    display: none;
+    width: calc(100% - 15px);
+  }
+}

@@ -1,15 +1,23 @@
 require 'net/http'
 
 module ExampleModule
+  class ParentClass
+    def initialize
+      puts("Parent Class")
+    end
+  end
+
   class ExampleClass < ParentClass
+
     def initialize(cv, iv)
-      super
+      super()
       @@classvar = cv
       @instancevar = iv
     end
 
     def method1()
-      self.p_method()
+      self.class.method2()
+      p_method()
     end
 
     def self.method2()
@@ -30,6 +38,6 @@ module ExampleModule
   end
 end
 
-ec = ExampleClass.new(1, 2)
+ec = ExampleModule::ExampleClass.new(1, 2)
 ec.method1()
 ExampleModule::ExampleClass.method2()

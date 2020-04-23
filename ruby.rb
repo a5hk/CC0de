@@ -32,4 +32,4 @@ end
 
 ec = ExampleClass.new(1, 2)
 ec.method1()
-ExampleClass.method2()
+ExampleModule::ExampleClass.method2()

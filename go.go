@@ -22,8 +22,10 @@ func (c *config) url() string {
 	return c.URL
 }
 
-func function1(v1 int, v2 int) int {
-	log.Debug("Debugging")
+func function1(v1 int, c chan int) int {
+	fmt.Println("function 1")
+
+	v2 := <-c
 
 	if v1 < 10 && v2 > 20 {
 		fmt.Println("Line")
@@ -31,10 +33,12 @@ func function1(v1 int, v2 int) int {
 	return 1
 }
 
+func function2(c chan int) {
+	c <- 30
+}
+
 func main() {
 	myChan := make(chan int)
-
-	for e := range myChan {
-		go function1(1, e)
-	}
+	go function2(myChan)
+	function1(1, myChan)
 }
